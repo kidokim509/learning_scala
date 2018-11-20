@@ -6,7 +6,7 @@
   * (예: scala.Int, scala.Double 등)
   * scala.AnyRef는 나머지 모든 클래스들의 부모이다. 자바에서 java.lang.Object에 해당한다.
   */
-object Chap01UnifiedTypes extends App {
+object Chap02UnifiedTypes extends App {
 
   val set = new scala.collection.mutable.LinkedHashSet[Any]
   set += "This is a string"  // 문자열을 추가한다

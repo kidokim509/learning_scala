@@ -7,11 +7,16 @@
   * secondary constructor 방법 가능
   * def this(파라미터들..)
   */
-object Chap02Class extends App {
+object Chap03Class extends App {
 
-  class Point(xc: Int, yc: Int) {
+  class Point(xc: Int, yc: Int)  {
     var x: Int = xc
     var y: Int = yc
+
+    def this(xc: Int, yc: Int, zc: Int) {
+      this(xc, yc)
+      print(zc)
+    }
 
     def move(dx: Int, dy: Int): Unit = {
       x = x + dx
