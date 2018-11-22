@@ -76,6 +76,83 @@ object Chap01Basics {
   }
 
   /**
+    * 클래스
+    */
+  class Greeter(prefix: String, suffix: String) {
+    def greet(name: String): Unit =
+      println(prefix + name + suffix)
+  }
+
+  val greeter = new Greeter("Hello, ", "!")
+  greeter.greet("Scala Developer")
+
+  /**
+    * 케이스 클래스
+    */
+  case class Point(x: Int, y:Int)
+
+  // initialize without new keyword
+  val point = Point(1, 2)
+  val anotherPoint = Point(1, 2)
+  val yetAnotherPoint = Point(2, 2)
+
+  if (point == anotherPoint) {
+    println(point + " and " + anotherPoint + " are the same.")
+  } else {
+    println(point + " and " + anotherPoint + " are different.")
+  } // Point(1,2) and Point(1,2) are the same.
+
+  if (point == yetAnotherPoint) {
+    println(point + " and " + yetAnotherPoint + " are the same.")
+  } else {
+    println(point + " and " + yetAnotherPoint + " are different.")
+  } // Point(1,2) and Point(2,2) are different.
+
+  /**
+    * 오브젝트
+    * 클래스 정의이자 자신의 singleton instance
+    */
+  object IdFactory {
+    private var counter = 0
+    def create(): Int = {
+      counter += 1
+      counter
+    }
+  }
+
+  val newId = IdFactory.create()
+  println(newId)
+  val newerId = IdFactory.create()
+  println(newerId)
+
+  /**
+    * 트레이트
+    * 필드와 메소드를 갖는 타입. 클래스는 여러개의 트레이트를 구현할 수 있다.
+    */
+  trait GreeterTraitDefOnly {
+    def greet(name: String): Unit
+  }
+
+  trait GreeterTrait {
+    def greet(name: String): Unit =
+      println("Hello, " + name + "!")
+  }
+
+  class DefaultGreeter extends GreeterTrait
+
+  class CustomizableGreeter(prefix: String, postfix: String) extends GreeterTrait {
+    override def greet(name: String): Unit = {
+      println(prefix + name + postfix)
+    }
+  }
+
+  val greeter2 = new DefaultGreeter()
+  greeter2.greet("Scala developer") // Hello, Scala developer!
+
+  val customGreeter = new CustomizableGreeter("How are you, ", "?")
+  customGreeter.greet("Scala developer") // How are you, Scala developer?
+
+  /**
     *
     * @param args
     */
