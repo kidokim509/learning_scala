@@ -65,6 +65,7 @@ object Chap03Class extends App {
 
   /**
     * Private Members and Getter/Setter Syntax
+    * 참고: https://www.dustinmartin.net/getters-and-setters-in-scala/
     */
   class PrivatePoint {
     private var _x = 0
@@ -89,6 +90,37 @@ object Chap03Class extends App {
   }
 
   val point4 = new PrivatePoint
-  point4.x = 99
+  point4.x = 99  // point4.x = (99), point4.x_=(99)
   point4.y = 101 // prints the warning
+
+  // 사실 y_=이 메소드명임. =로 assign을 하는 것 같은 trick을 쓴 것.
+  point4.y_=(101)
+  println(point4.y)
+
+  /**
+    * https://www.scala-lang.org/files/archive/spec/2.11/04-basic-declarations-and-definitions.html#variable-declarations-and-definitions
+    *
+    * A variable declaration var x: T is equivalent to the declarations of both a getter function x and a setter function x_=:
+    *  def x: T
+    *  def x_= (y: T): Unit
+    */
+  class TimeOfDayVar {
+    private var h: Int = 0
+    private var m: Int = 0
+    private var s: Int = 0
+
+    def hours              =  h
+    def hours_= (h: Int)   =  if (0 <= h && h < 24) this.h = h else throw new RuntimeException()
+
+    def minutes            =  m
+    def minutes_= (m: Int) =  if (0 <= m && m < 60) this.m = m else throw new RuntimeException()
+
+    def seconds            =  s
+    def seconds_= (s: Int) =  if (0 <= s && s < 60) this.s = s else throw new RuntimeException()
+
+  }
+  val d = new TimeOfDayVar
+  d.hours = 8; d.minutes = 30; d.seconds = 0
+  d.hours = 25
+
 }

@@ -1,3 +1,7 @@
+/**
+  * https://docs.scala-lang.org/tour/basics.html
+  */
+
 object Chap01Basics {
   /**
     * 표현식
