@@ -1,4 +1,4 @@
-class Chap10CaseClasses {
+object Chap10CaseClasses extends App {
 
   case class Book(isbn: String)
 
@@ -21,8 +21,8 @@ class Chap10CaseClasses {
   val messagesAreTheSame = message2 == message3  // true
 
   // Copying
-  case class Message(sender: String, recipient: String, body: String)
-  val message4 = Message("julien@bretagne.fr", "travis@washington.us", "Me zo o komz gant ma amezeg")
+  case class Message2(sender: String, recipient: String, body: String)
+  val message4 = Message2("julien@bretagne.fr", "travis@washington.us", "Me zo o komz gant ma amezeg")
   val message5 = message4.copy(sender = message4.recipient, recipient = "claire@bourgogne.fr")
   message5.sender  // travis@washington.us
   message5.recipient // claire@bourgogne.fr
