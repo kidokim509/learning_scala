@@ -1,5 +1,6 @@
 /**
   * https://docs.scala-lang.org/tour/generic-classes.html
+  * 공변과 불변: http://loustler.io/languages/function_programming_covariant_invariant/
   */
 object Chap15GenericClasses extends App {
   /*
@@ -112,8 +113,8 @@ object Chap15GenericClasses extends App {
   }
 
   val catContainer: Container[Cat] = new Container(Cat("Felix"))
-  val animalContainer: Container[Animal] = catContainer
-  animalContainer.setValue(Dog("Spot"))
+  // val animalContainer: Container[Animal] = catContainer
+  // animalContainer.setValue(Dog("Spot"))
   val cat: Cat = catContainer.getValue // Oops, we'd end up with a Dog assigned to a Cat
 
 }
